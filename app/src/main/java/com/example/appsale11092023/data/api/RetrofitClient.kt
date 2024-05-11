@@ -1,4 +1,4 @@
-package com.example.appsale11092023.data.api.dto
+package com.example.appsale11092023.data.api
 
 import com.example.appsale11092023.common.AppCommon
 import com.google.gson.GsonBuilder
