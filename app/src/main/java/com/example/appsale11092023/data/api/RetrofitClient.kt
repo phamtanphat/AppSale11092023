@@ -13,7 +13,7 @@ object RetrofitClient {
 
     fun getRetrofit() = retrofit
 
-    fun getApiService() = apiService
+    fun getApiService(): ApiService = apiService
 
     private fun createRetrofit(): Retrofit {
         val okHttpClient = OkHttpClient.Builder()

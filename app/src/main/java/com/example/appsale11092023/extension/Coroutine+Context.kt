@@ -11,3 +11,4 @@ suspend inline fun CoroutineScope.launchIO(crossinline scope: suspend CoroutineS
 suspend inline fun CoroutineScope.launchOnMain(crossinline scope: suspend CoroutineScope.() -> Unit) {
     withContext(Dispatchers.Main) { scope.invoke(this) }
 }
+
