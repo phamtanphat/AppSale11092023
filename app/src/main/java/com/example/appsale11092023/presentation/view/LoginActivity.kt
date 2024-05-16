@@ -1,6 +1,10 @@
 package com.example.appsale11092023.presentation.view
 
+import android.content.Intent
+import android.graphics.Color
 import android.os.Bundle
+import android.text.SpannableStringBuilder
+import android.text.method.LinkMovementMethod
 import android.widget.LinearLayout
 import android.widget.TextView
 import android.widget.Toast
@@ -14,6 +18,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.example.appsale11092023.R
 import com.example.appsale11092023.data.api.AppResource
 import com.example.appsale11092023.presentation.viewmodel.LoginViewModel
+import com.example.appsale11092023.util.SpannedUtils
 import com.example.appsale11092023.util.ToastUtils
 import com.google.android.material.textfield.TextInputEditText
 
@@ -79,5 +84,25 @@ class LoginActivity : AppCompatActivity() {
         buttonSignIn = findViewById(R.id.button_sign_in)
         tvRegister = findViewById(R.id.text_view_register)
         layoutLoading = findViewById(R.id.layout_loading)
+
+        displayTextViewRegister()
+    }
+
+    private fun displayTextViewRegister() {
+        SpannableStringBuilder().apply {
+            append("Don't have an account?")
+            append(SpannedUtils.setClickColorLink(
+                text = "Register",
+                context = this@LoginActivity,
+                onListenClick = onClickRegister
+            ))
+            tvRegister.text = this
+            tvRegister.highlightColor = Color.TRANSPARENT
+            tvRegister.movementMethod = LinkMovementMethod.getInstance()
+        }
+    }
+
+    private var onClickRegister =  {
+        startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
     }
 }
