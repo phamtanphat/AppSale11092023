@@ -9,4 +9,7 @@ import retrofit2.http.POST
 interface ApiService {
     @POST("user/sign-in")
     fun signIn(@Body body: HashMap<String, Any>): Call<AppResponseDTO<UserDTO>>
+
+    @POST("user/sign-up")
+    fun signUp(@Body map: HashMap<String, Any>): Call<AppResponseDTO<UserDTO>>
 }

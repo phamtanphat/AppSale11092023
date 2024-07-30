@@ -15,6 +15,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.isVisible
 import androidx.lifecycle.ViewModelProvider
+import com.example.appsale11092023.Prefs
 import com.example.appsale11092023.R
 import com.example.appsale11092023.data.api.AppResource
 import com.example.appsale11092023.presentation.viewmodel.LoginViewModel
@@ -29,6 +30,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var buttonSignIn: LinearLayout
     private lateinit var tvRegister: TextView
     private lateinit var layoutLoading: LinearLayout
+    private lateinit var pref: Prefs
     private val viewModel: LoginViewModel by lazy {
         ViewModelProvider(this)[LoginViewModel::class.java]
     }
@@ -57,7 +59,7 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            viewModel.login(email, password)
+            viewModel.login(email, password,this)
         }
 
     }
