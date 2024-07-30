@@ -55,4 +55,43 @@ object AuthenticationRepository {
             })
         }
     }
+    
+    fun requestSignUp(
+        email: String,
+        password: String,
+        name: String,
+        phone: String,
+        address: String,
+        onListenResponse: AppInterface.OnListenResponse<UserDTO>
+    ) {
+        CoroutineScope(Dispatchers.IO).launch {
+            val hashMap = HashMap<String, Any>().apply {
+                put("email", email)
+                put("password", password)
+                put("name", name)
+                put("phone", phone)
+                put("address", address)
+            }
+
+            apiService.signUp(hashMap).enqueue(object : Callback<AppResponseDTO<UserDTO>> {
+                override fun onResponse(
+                    call: Call<AppResponseDTO<UserDTO>>,
+                    response: Response<AppResponseDTO<UserDTO>>
+                ) {
+                    // Success
+                    if (response.isSuccessful && response.body() != null) {
+                        onListenResponse.onSuccess(response.body()?.data)
+                    } else if (response.errorBody() != null && StatusCodeType.hasCodeError(response.code())) {
+                        val json = JSONObject(response.errorBody()?.string() ?: "{}")
+                        val errorMessage = json.optString("message")
+                        onListenResponse.onFail(errorMessage)
+                    }
+                }
+
+                override fun onFailure(call: Call<AppResponseDTO<UserDTO>>, t: Throwable) {
+                    onListenResponse.onFail(t.message.toString())
+                }
+            })
+        }
+    }
 }
