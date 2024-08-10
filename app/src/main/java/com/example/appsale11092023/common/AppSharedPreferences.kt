@@ -13,11 +13,19 @@ object AppSharedPreferences {
     }
 
     private fun edit(context: Context): SharedPreferences.Editor {
+<<<<<<< Updated upstream
         return getSharedPreferences(context).edit()
     }
 
     fun saveData(context: Context, key: String, value: String) {
         edit(context).apply {
+=======
+        return getSharedPreferences(context = context).edit()
+    }
+
+    fun saveData(context: Context, key: String, value: String) {
+        edit(context).apply() {
+>>>>>>> Stashed changes
             putString(key, value)
             apply()
         }
