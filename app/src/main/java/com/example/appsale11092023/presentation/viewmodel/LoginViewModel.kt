@@ -33,17 +33,7 @@ class LoginViewModel : ViewModel() {
                 onListenResponse = object : AppInterface.OnListenResponse<UserDTO> {
                     override fun onSuccess(data: UserDTO?) {
                         val user = UserHelper.convertToUser(data)
-<<<<<<< Updated upstream
                         user?.token?.let {  AppSharedPreferences.saveData(context, AppCommon.KEY_TOKEN, it) }
-=======
-                        user?.token?.let {
-                            AppSharedPreferences.saveData(
-                                context,
-                                AppCommon.KEY_TOKEN,
-                                it
-                            )
-                        }
->>>>>>> Stashed changes
                         userLiveData.postValue(AppResource.Success(user))
                         loadingLiveData.postValue(false)
                     }
