@@ -57,7 +57,7 @@ class LoginActivity : AppCompatActivity() {
                 return@setOnClickListener
             }
 
-            viewModel.login(email, password)
+            viewModel.login(this@LoginActivity, email, password)
         }
 
     }
