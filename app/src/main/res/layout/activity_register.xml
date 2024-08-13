@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/main"
-    tools:context=".presentation.view.RegisterActivity">
+    tools:context=".presentation.view.activity.RegisterActivity">
     <ImageView
         android:id="@+id/image_view_sign_up"
         android:layout_width="400dp"

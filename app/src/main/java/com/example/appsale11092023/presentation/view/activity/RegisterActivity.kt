@@ -1,4 +1,4 @@
-package com.example.appsale11092023.presentation.view
+package com.example.appsale11092023.presentation.view.activity
 
 import android.graphics.Color
 import android.os.Bundle
@@ -14,7 +14,6 @@ import androidx.core.view.isGone
 import androidx.lifecycle.ViewModelProvider
 import com.example.appsale11092023.R
 import com.example.appsale11092023.data.api.AppResource
-import com.example.appsale11092023.presentation.viewmodel.LoginViewModel
 import com.example.appsale11092023.presentation.viewmodel.RegisterViewModel
 import com.example.appsale11092023.util.SpannedUtils
 import com.example.appsale11092023.util.ToastUtils

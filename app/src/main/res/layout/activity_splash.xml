@@ -5,17 +5,13 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".presentation.view.SplashActivity">
+    tools:context=".presentation.view.activity.SplashActivity">
 
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/lottie_animation_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-<<<<<<< HEAD
-        app:lottie_rawRes="@raw/demo_animation"
-=======
         app:lottie_rawRes="@raw/splash_animation"
->>>>>>> 6349ecba2b4c0b9bfc5cc9438a165f24007b7306
         app:lottie_autoPlay="true"
         app:lottie_repeatCount="1"
         app:lottie_repeatMode="reverse"

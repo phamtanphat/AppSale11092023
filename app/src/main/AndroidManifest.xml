@@ -16,10 +16,10 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".presentation.view.ProductActivity"
+            android:name=".presentation.view.activity.ProductActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.view.SplashActivity"
+            android:name=".presentation.view.activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,10 +28,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".presentation.view.RegisterActivity"
+            android:name=".presentation.view.activity.RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".presentation.view.LoginActivity"
+            android:name=".presentation.view.activity.LoginActivity"
             android:exported="false" />
     </application>
 

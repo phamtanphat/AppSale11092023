@@ -1,4 +1,4 @@
-package com.example.appsale11092023.presentation.view
+package com.example.appsale11092023.presentation.view.activity
 
 import android.animation.Animator
 import android.content.Intent
@@ -29,40 +29,14 @@ class SplashActivity : AppCompatActivity() {
         lottieView = findViewById(R.id.lottie_animation_view)
 
         lottieView.addAnimatorListener(object : Animator.AnimatorListener {
-<<<<<<< HEAD
-            override fun onAnimationCancel(p0: Animator) {
-            }
-
-            override fun onAnimationStart(p0: Animator) {
-            }
-
-            override fun onAnimationEnd(p0: Animator) {
-=======
             override fun onAnimationStart(animation: Animator) { }
             override fun onAnimationCancel(animation: Animator) { }
             override fun onAnimationRepeat(animation: Animator) { }
             override fun onAnimationEnd(animation: Animator) {
->>>>>>> 6349ecba2b4c0b9bfc5cc9438a165f24007b7306
                 val token = AppSharedPreferences.getString(this@SplashActivity, AppCommon.KEY_TOKEN)
                 val intent = Intent(
                     this@SplashActivity,
                     if (token.isBlank()) {
-<<<<<<< HEAD
-                        // navigate to sign in screen
-                        LoginActivity::class.java
-                    } else {
-                        // navigate to product screen
-                        ProductActivity::class.java
-                    }
-                    )
-                startActivity(intent)
-                finish()
-            }
-
-            override fun onAnimationRepeat(p0: Animator) {
-            }
-        })
-=======
                         LoginActivity::class.java
                     } else {
                         ProductActivity::class.java
@@ -73,6 +47,5 @@ class SplashActivity : AppCompatActivity() {
             }
         })
 
->>>>>>> 6349ecba2b4c0b9bfc5cc9438a165f24007b7306
     }
 }

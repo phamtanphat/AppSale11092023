@@ -1,4 +1,4 @@
-package com.example.appsale11092023.presentation.view
+package com.example.appsale11092023.presentation.view.activity
 
 import android.content.Intent
 import android.graphics.Color
@@ -7,9 +7,7 @@ import android.text.SpannableStringBuilder
 import android.text.method.LinkMovementMethod
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
