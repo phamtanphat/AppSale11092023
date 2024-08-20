@@ -96,12 +96,15 @@ class ProductActivity : AppCompatActivity() {
         val rootView = menu?.findItem(R.id.item_menu_cart)?.actionView
         cartItemArea = rootView?.findViewById(R.id.frame_layout_cart_area)
         textBadge = rootView?.findViewById(R.id.text_cart_badge)
+
+        cartItemArea?.setOnClickListener {
+            ToastUtils.showToast(this@ProductActivity, "Click icon cart")
+        }
         return super.onCreateOptionsMenu(menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.item_menu_cart -> ToastUtils.showToast(this@ProductActivity, "Click icon cart")
             R.id.item_menu_history_order -> ToastUtils.showToast(this@ProductActivity, "Click icon history")
         }
         return super.onOptionsItemSelected(item)
