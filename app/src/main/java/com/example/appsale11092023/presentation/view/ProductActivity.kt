@@ -12,12 +12,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.RecyclerView
 import com.example.appsale11092023.R
 import com.example.appsale11092023.data.api.AppResource
+import com.example.appsale11092023.data.model.Cart
 import com.example.appsale11092023.presentation.view.adapter.ProductAdapter
 import com.example.appsale11092023.presentation.viewmodel.ProductViewModel
 import com.example.appsale11092023.util.ToastUtils
@@ -56,27 +58,42 @@ class ProductActivity : AppCompatActivity() {
     }
 
     private fun event() {
-        productViewModel.getProductList()
+//        productViewModel.getProductList()
+        productViewModel.getCart(this)
     }
 
     private fun observerData() {
         // Loading
-        productViewModel.getLoading().observe(this, Observer {
+        productViewModel.getLoading().observe(this) {
             layoutLoading?.isVisible = it
-        })
+        }
 
         // List product
-        productViewModel.getProductLiveData().observe(this, Observer {
-            when(it) {
+        productViewModel.getProductLiveData().observe(this) {
+            when (it) {
                 is AppResource.Success -> {
                     productAdapter.setListProduct(it.data?.toList() ?: emptyList())
                 }
+
                 is AppResource.Error -> {
                     //show error
                     ToastUtils.showToast(this, it.error)
                 }
             }
-        })
+        }
+
+        productViewModel.getCartLiveData().observe(this) {
+            when (it) {
+                is AppResource.Success -> {
+                    updateBadge(it.data)
+                }
+
+                is AppResource.Error -> {
+                    //show error
+                    ToastUtils.showToast(this, it.error)
+                }
+            }
+        }
     }
 
     private fun initView() {
@@ -108,5 +125,18 @@ class ProductActivity : AppCompatActivity() {
             R.id.item_menu_history_order -> ToastUtils.showToast(this@ProductActivity, "Click icon history")
         }
         return super.onOptionsItemSelected(item)
+    }
+
+    private fun updateBadge(cart: Cart?) {
+        val totalProduct = cart?.listProduct?.size ?: 0
+        if (totalProduct == 0) {
+            textBadge?.isGone = true
+        } else {
+            textBadge?.isVisible = true
+            textBadge?.text = cart?.listProduct
+                ?.map { it?.quantity ?: 0 }
+                ?.reduce { acc, quantity -> acc + quantity }
+                .toString()
+        }
     }
 }

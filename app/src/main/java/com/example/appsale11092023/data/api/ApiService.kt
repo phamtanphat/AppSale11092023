@@ -1,11 +1,14 @@
 package com.example.appsale11092023.data.api
 
 import com.example.appsale11092023.data.api.dto.AppResponseDTO
+import com.example.appsale11092023.data.api.dto.CartDTO
 import com.example.appsale11092023.data.api.dto.ProductDTO
 import com.example.appsale11092023.data.api.dto.UserDTO
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.HEAD
+import retrofit2.http.Header
 import retrofit2.http.POST
 
 interface ApiService {
@@ -17,4 +20,7 @@ interface ApiService {
 
     @GET("product")
     fun getProductListService(): Call<AppResponseDTO<List<ProductDTO>>>
+
+    @GET("cart")
+    fun getCartService(@Header("Authorization") token: String): Call<AppResponseDTO<CartDTO>>
 }
