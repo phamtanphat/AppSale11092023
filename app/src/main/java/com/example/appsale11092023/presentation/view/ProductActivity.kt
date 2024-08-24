@@ -58,7 +58,7 @@ class ProductActivity : AppCompatActivity() {
     }
 
     private fun event() {
-//        productViewModel.getProductList()
+        productViewModel.getProductList()
         productViewModel.getCart(this)
     }
 

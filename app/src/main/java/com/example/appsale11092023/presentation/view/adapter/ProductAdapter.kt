@@ -21,6 +21,7 @@ class ProductAdapter(
     fun setListProduct(listProduct: List<Product?>) {
         if (listProduct.isEmpty()) return
         this.listProduct = listProduct
+        notifyDataSetChanged()
     }
 
     inner class ProductViewHolder(view: View) : RecyclerView.ViewHolder(view) {
